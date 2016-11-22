@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/JQuery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/header.css" />
+		<link rel="stylesheet" type="text/css" href="css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="css/rendering.css" />
+	</head>
+
+	<body>
+		<!--头部-->
+		<div id="header">
+			<div class="header_wrap">
+				<div class="header_nav_wrap">
+					<div class="header_nav">
+						<img src="img/Contact/shininglogo.png" />
+						<div class="ul">
+							<li>
+								<a href="Home.html">Home </a>
+							</li>
+							<li>
+								<a href="about.html">About</a>
+							</li>
+							<li>
+								<a href="rendering.html" style="border: 1px solid whitesmoke;">Rendering</a>
+							</li>
+							<li>
+								<a href="3dimg.html">3D Animation</a>
+							</li>
+							<li>
+								<a href="bimg.html">Bim</a>
+							</li>
+							<li>
+								<a href="contact.html">Contact</a>
+							</li>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--头结束-->
+
+		<!--中间部分-->
+		<div id="middle_wrap">
+			<!--轮播图-->
+			<div id="middle_slider" style="">
+				<!--<img src="img/Rendering/Banner (3).jpg" alt="" />-->
+				<img src="img/Rendering/Banner (1).jpg" alt="" />
+				<img src="img/Rendering/Banner (2).jpg" alt="" />
+				<img src="img/Rendering/Banner (3).jpg" alt="" />
+				<!--<img src="img/Rendering/Banner (1).jpg" alt="" />-->
+			</div>
+			<div id="middle_sp">
+				<span class="middle_s active"></span>
+				<span class="middle_s"></span>
+				<span class="middle_s"></span>
+			</div>
+		</div>
+		<!--瀑布流-->
+		<div id="middle_wf">
+			<ul class="wrap">
+
+			</ul>
+			<div class="masking">
+				<div class="box"></div>
+			</div>
+		</div>
+
+		<!--尾部-->
+		<div id="footer">
+			<div class="footer_e"><img src="img/Sunshine/mail.jpg" onmouseover="this.src ='img/Sunshine/mail_h.jpg'" onmouseout="this.src ='img/Sunshine/mail.jpg'" /></div>
+			<div class="footer_img">
+				<ul class="footer_ul">
+					<li><img src="img/Sunshine/facebook.jpg" onmouseover="this.src = 'img/Sunshine/facebook_h.jpg'" onmouseout="this.src = 'img/Sunshine/facebook.jpg'" /></li>
+					<li><img src="img/Sunshine/youtube.jpg" onmouseover="this.src = 'img/Sunshine/youtube_h.jpg'" onmouseout="this.src = 'img/Sunshine/youtube.jpg'" /></li>
+					<li><img src="img/Sunshine/linkedln.jpg" onmouseover="this.src = 'img/Sunshine/linkedln_h.jpg'" onmouseout="this.src = 'img/Sunshine/linkedln.jpg'" /></li>
+					<li><img src="img/Sunshine/twitter.jpg" onmouseover="this.src = 'img/Sunshine/twitter_h.jpg'" onmouseout="this.src = 'img/Sunshine/twitter.jpg'" /></li>
+				</ul>
+			</div>
+			<div class="footer_msg">Copyright © 1998-2015 shining Group</div>
+		</div>
+	</body>
+	<script src="js/tween.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/JQuery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var middleSp = document.getElementById("middle_sp");
+		var spans = document.querySelectorAll("#middle_sp>span");
+		var middleSl = document.getElementById("middle_slider");
+		var imgs = document.querySelectorAll("#middle_slider>img");
+		middleSl.style.width = imgs[0].offsetWidth * imgs.length + "px";
+		middleSl.style.height = imgs[0].offsetHeight + "px";
+		console.log(middleSl);
+		var index = 0;
+		var timer = null;
+		var timer1 = null;
+		for(var i = 0; i < spans.length; i++) {
+			spans[i].index = i;
+			spans[i].onclick = function() {
+					index = this.index;
+					this.className += " active";
+					clearInterval(timer1);
+					move();
+					autoPlay();
+				}
+				//							
+		}
+
+		//自动播放
+		function autoPlay() {
+			timer1 = setInterval(function() {
+				nextFn();
+				//				move();
+			}, 2000)
+
+		}
+
+		//播放下一张图片
+		function nextFn() {
+
+			if(index == 3) {
+				middleSl.style.left = "0px";
+				index = 0;
+			}
+			move();
+			index++;
+		}
+
+		function move() {
+			for(var i = 0; i < spans.length; i++) {
+				spans[i].className = "middle_s";
+			}
+			spans[index].className += " active";
+			var t = 0;
+			var d = 1;
+			var b = middleSl.offsetLeft;
+			var c = -index * imgs[0].offsetWidth - b;
+			clearInterval(timer);
+			timer = setInterval(function() {
+				t++;
+				middleSl.style.left = Tween.Linear(t, b, c, d) + "px";
+				//				middleSl.style.opacity = Tween.Linear(0, 1, 0, 1);
+				console.log(middleSl.style.left)
+				if(t >= d) {
+					clearInterval(timer);
+					timer = null;
+				}
+				var leftStr = middleSl.style.left;
+				leftStr.split("p")[0];
+				leftStr = parseFloat(leftStr);
+				if(leftStr <= -imgs[0].width * imgs.length) {
+					middleSl.style.left = 0;
+					index = 0;
+				}
+
+			}, 30)
+		}
+
+		autoPlay();
+	</script>
+	<script type="text/javascript">
+		// 列数数组，存储每列的高度
+		var colArr;
+		// 比例变量
+		var ratio;
+		
+		function imgClick(ev) {
+			// JQ取消冒泡
+			ev.stopPropagation();
+			// 处理响应式，点击背景滑动，滚动条等问题？？？
+			$("body").css("overflow", "visible");
+			// JQ对象 --> DOM对象
+//			$(".masking")[0].style.display = "block";
+			$(".masking").get(0).style.display = "block";
+			
+			var index = $(this).attr("index");
+			var url = 'imgs/big/'+index+'.jpg';
+			
+			var img = new Image();
+			img.src = url;
+			img.onload = function() {
+				var ableW = $(window).width() * 0.8;
+				var ableH = $(window).height() * 0.8;
+				var ableS = ableW / ableH;
+				var imgW = img.width;
+				var imgH = img.height;
+				var imgS = imgW / imgH;
+				// 设置宽高
+				if (ableS >= imgS) {
+					$(".box").height(ableH);
+					$(".box").width(ableH * imgS);
+				} else {
+					$(".box").width(ableW);
+					$(".box").height(ableW / imgS);
+				}
+				// 添加到DOM
+				$(".box").append($(img));
+				
+				// 设置方位
+				var l = ($(window).innerWidth() - $(".box").outerWidth()) / 2;
+				var t = ($(window).innerHeight() - $(".box").outerHeight()) / 2;
+				$(".box").css({
+					left: l,
+					top: t
+				});
+			}
+		}
+		
+		$(document).click(function() {
+			$(".box").empty();
+			$(".box").attr("style", "");
+			$("body").css("overflow", "auto");
+			$(".masking").css("display", "none");
+		})
+		
+		
+		function createLi(url, index) {
+			// 创建DOM结构中出现的元素节点
+			var li = $("<li class='li'></li>");
+			var a = $("<a href='javascript:'></a>");
+			var div = $("<div></div>");
+			var img = new Image();
+			img.draggable = false;
+			// 形参DOM树
+			a.append($(img));
+			a.append(div);
+			a.appendTo(li);
+			
+			// 给a添加点击方法(设置一个属性可以连接大小图)
+			a.attr("index", index);
+			a.click(imgClick);
+
+			// 获得图片资源并请求
+			img.src = url;
+			img.onload = function() {
+				img.onload = null;
+				// 请求得到的图片原宽高
+				// console.log(this.width, this.height)
+				// 等比缩放后的盒子高
+				var maxH = $('.wrap').width() * ratio / this.width * this.height
+					// 将li添加到DOM中，变可以拿到等比缩放后的盒子高，就是等比缩放的高
+				addLi(li);
+				var minH = $(img).height();
+				// 设置相关联元素盒子的高度
+//				 a.height(minH);
+//				 li.height(minH);
+			}
+		}
+
+		// 将li添加到DOM中
+		function addLi(li) {
+			
+			// 设置li的相关参数
+			// 获得最短列
+			var index = minIndex(); 
+			var l = $(".wrap").width() * ratio * index;
+			var t = colArr[index];
+			li.css({left: l, top: t});
+				
+			// 得到的参数li是JQ对象
+			li.appendTo($(".wrap"));
+			// 更新数组（可视高度）
+			colArr[index] += li.outerHeight();
+		}
+		
+		// 获得最短列的索引
+		function minIndex() {
+			var index = 0;
+			for (var i = 1; i < colArr.length; i++) {
+				if (colArr[index] > colArr[i]) {
+					index = i;
+				}
+			}
+			return index;
+		}
+		
+		// 屏幕尺寸发生变化会不断触发
+		$(window).resize(function() {
+			// 响应式布局判断
+			responseJudge();
+			
+			// 让蒙版消失
+			$(".masking").css("display", "none");
+			$("body").css("overflow", "auto");
+			
+			// 取出所有布局好的li
+			var lis = $('.li');
+			// 遍历更新布局
+			for (var i = 0; i < lis.length; i++) {
+				var index = minIndex(); 
+				var l = $(".wrap").width() * ratio * index;
+				var t = colArr[index];
+				lis.eq(i).css({left: l, top: t});
+				colArr[index] += lis.eq(i).outerHeight();
+			}
+		})
+
+		// DOM加载完毕加载
+		$(function() {
+			// 响应式布局判断
+			responseJudge();
+			for(var i = 1; i <= 39; i++) {
+				var url = 'imgs/small/' + i + '.jpg';
+				// 传i是让小图与大图建立某种关系
+				createLi(url, i)
+			}
+		})
+		
+		// 响应式布局判断
+		function responseJudge() {
+			var width = $(window).innerWidth();
+			if (width >=876) {
+				ratio = 1 / 4;
+				colArr = [0, 0, 0, 0];
+			} else if(width >=480) {
+				ratio = 1 / 3;
+				colArr = [0, 0, 0];
+			} else {
+				ratio = 1 / 2;
+				colArr = [0, 0];
+			}
+		}
+	</script>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="shortcut icon" href="//www.nuomi.com/static/common/img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/header.css" />
+		<link rel="stylesheet" type="text/css" href="css/footer.css" />
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+
+	<body>
+		<div id="header">
+			<div class="header_wrap">
+				<div class="header_nav_wrap">
+					<div class="header_nav">
+						<img src="img/Sunshine/shininglogo.png" />
+						<div class="ul">
+							<li>
+								<a href="Home.html" style="border: 1px solid whitesmoke;">Home </a>
+							</li>
+							<li>
+								<a href="about.html">About</a>
+							</li>
+							<li>
+								<a href="rendering.html">Rendering</a>
+							</li>
+							<li>
+								<a href="3dimg.html">3D Animation</a>
+							</li>
+							<li>
+								<a href="bimg.html">Bim</a>
+							</li>
+							<li>
+								<a href="contact.html">Contact</a>
+							</li>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="content">
+			<div id="content_wrap">
+				<div id="content_ul1">
+					<!--<div >-->
+						<a class="content_li1" href="rendering.html" style="border: none;">
+							<img class="needfirst" id="img1" src="img/Sunshine/home_pic_one.png" />
+							<img src="img/Sunshine/home_pic_one_h.png" />
+						</a>
+					<!--</div>-->
+					<div class="content_li2"></div>
+					<a class="content_li3"  href="rendering.html" style="border: none;">
+						<span>RENDERINGS</span>
+						<p>Masterplan、Public Building、commercial Building、Residential Building、Landscape Designa</p>
+					</a>
+				</div>
+				<div id="content_ul2">
+					<a class="content_li1 content_right" href="rendering.html"  id="content_img" style="border: none;">
+						<img class="right" id="img2" src="img/Sunshine/home_pic_two.jpg" />
+						<img src="img/Sunshine/home_pic_two_h.png" />
+					</a>
+					<div class="content_li2"></div>
+					<a class="content_li3 right"  href="rendering.html" style="border: none;">
+						<span>BIM</span>
+						<p>Model Completion、Clash Detection、MEP Integration、Curtain Wall Remedying、BIM Consulting</p>
+					</a>
+				</div>
+				<div id="content_ul3">
+					<a class="content_li1" href="rendering.html" style="border: none;" id="content_img" style="border: none;">
+						<img class="needfirst" id="img3" src="img/Sunshine/homes_pic_three.jpg" />
+						<img src="img/Sunshine/homes_pic_three_h.jpg" />
+					</a>
+					<div class="content_li2"></div>
+					<a class="content_li3" style="border: none;" href="rendering.html" style="border: none;">
+						<span>3D ANIMATION</span>
+						<p>Real estate advertising animation Design scheme Animation Corporate promotional Animation</p>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="footer">
+			<div class="footer_e"><img src="img/Sunshine/mail.jpg" onmouseover="this.src ='img/Sunshine/mail_h.jpg'" onmouseout="this.src ='img/Sunshine/mail.jpg'" /></div>
+			<div class="footer_img">
+				<ul class="footer_ul">
+					<li><img src="img/Sunshine/facebook.jpg" onmouseover="this.src = 'img/Sunshine/facebook_h.jpg'" onmouseout="this.src = 'img/Sunshine/facebook.jpg'" /></li>
+					<li><img src="img/Sunshine/youtube.jpg" onmouseover="this.src = 'img/Sunshine/youtube_h.jpg'" onmouseout="this.src = 'img/Sunshine/youtube.jpg'" /></li>
+					<li><img src="img/Sunshine/linkedln.jpg" onmouseover="this.src = 'img/Sunshine/linkedln_h.jpg'" onmouseout="this.src = 'img/Sunshine/linkedln.jpg'" /></li>
+					<li><img src="img/Sunshine/twitter.jpg" onmouseover="this.src = 'img/Sunshine/twitter_h.jpg'" onmouseout="this.src = 'img/Sunshine/twitter.jpg'" /></li>
+				</ul>
+			</div>
+			<div class="footer_msg">Copyright © 1998-2015 shining Group</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var imgs = document.querySelectorAll(".content_li1>img");
+		var content_ul1 = document.querySelector("#content_ul1");
+		var content_ul2 = document.querySelector("#content_ul2");
+		var content_ul3 = document.querySelector("#content_ul3");
+		var contentlis = document.querySelectorAll(".content_li2");
+		var img1 = document.getElementById("img1");
+		var img2 = document.getElementById("img2");
+		var img3 = document.getElementById("img3");
+		content_ul1.onmouseover = function() {
+			img1.className += " transparent";
+			contentlis[0].className += " bg";
+		}
+		content_ul1.onmouseout = function() {
+			img1.className = "needfirst";
+			contentlis[0].className = "content_li2";
+		}
+		content_ul2.onmouseover = function() {
+			img2.className += " transparent";
+			contentlis[1].className += " bg";
+		}
+		content_ul2.onmouseout = function() {
+			img2.className = "needfirst";
+			contentlis[1].className = "content_li2";
+		}
+		content_ul3.onmouseover = function() {
+			img3.className += " transparent";
+			contentlis[2].className += " bg";
+		}
+		content_ul3.onmouseout = function() {
+			img3.className = "needfirst";
+			contentlis[2].className = "content_li2";
+		}
+	</script>
+
+</html>

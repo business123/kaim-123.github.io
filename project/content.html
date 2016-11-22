@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#content {
+				min-width: 1127px;
+				margin: 0 auto;
+				position: relative;
+			}
+			#content_wrap{
+				margin: 0 auto;
+				max-width: 980px;
+				position: relative;
+			}
+			#content_ul1,
+			#content_ul3 {
+				position: relative;
+			    min-height: 150px;
+			    margin: 0 auto;
+			    width: 980px;
+			  /*  float: left;*/
+			    overflow: hidden;
+			}
+			#content_ul2{
+				position: relative;
+			    height: 150px;
+			    margin: 0 auto;
+			    width: 980px;
+			   /* float: right;*/
+			    overflow: hidden;
+			}
+			#content_ul1:after{
+				content: "";
+				clear: both;
+				display: block;
+			}
+			#content_ul1>li,#content_ul3>li{
+				float: left;
+				overflow: hidden;
+			}
+			#content_ul2>li{
+				float: right;
+				overflow: hidden;
+			}
+			.content_li1{
+				width: 60%;
+				/*min-height: 212px;*/
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.content_li1>img{
+				width: 558px;
+				overflow: hidden;
+				float: left;
+			}
+			.content_li1>img:nth-child(1){
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.content_li2{
+				width: 2%;
+			   height: 100%;
+			    position: absolute;
+			    left: 57%;
+			    top: 0;
+			    background-color: yellowgreen;
+			}
+			#content_ul2>.content_li1{
+				position: absolute;
+			    left: 38%;
+			    top: 0;
+			}
+			#content_ul2>.content_li2{
+				position: absolute;
+				left: 36%;
+				top: 0;
+			}
+			#content_ul2>.content_li3{
+				position: absolute;
+				left: -7%;
+				top: 0;
+			}
+			.content_li3{
+				width: 39%;
+				position: absolute;right: 0;top: 0;
+				padding-left: 2%;
+				height: 212px;
+			}
+			.needfirst{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.content_right{
+				float: right;
+			}
+			.right{
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+			span{
+				font: bold 30px/33px verdana;
+			}
+			.content_li3 {
+			    padding-top: 20px;
+			  /*  margin-left: 25px;*/
+			    text-align: left;
+			}
+			.content_li3>p{
+				margin-top: 25px;
+			}
+			.content_li3.right{
+				padding-top: 20px;
+				margin-right: 25px;
+				text-align: right;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="content">
+			<div id="content_wrap">
+				<div id="content_ul1">
+					<div class="content_li1">
+						<img class="needfirst" src="img/Sunshine/home_pic_one.png" onmouseover="this.src = 'img/Sunshine/home_pic_one_h.png'" onmouseout="this.src = 'img/Sunshine/home_pic_one.png'"/>
+					</div>
+					<div class="content_li2" onmouseover=""></div>
+					<div class="content_li3">
+						<span>效果图</span>
+						<p>总体规划, 公共建筑, 商业建筑, 住宅建筑, 景观迪赛纳</p>
+					</div>
+				</div>
+				<div id="content_ul2">
+					<div class="content_li1 content_right">
+						<img class="right" src="img/Sunshine/home_pic_two.jpg"onmouseover="this.src = 'img/Sunshine/home_pic_two_h.png'" onmouseout="this.src = 'img/Sunshine/home_pic_two.jpg'"/>
+					</div>
+					<div class="content_li2"></div>
+					<div class="content_li3 right">
+						<span>BIM</span>
+						<p>模型完成后,冲突检测,环境保护一体化,幕墙修补措施,BIM咨询</p>
+					</div>
+				</div>
+				<div id="content_ul3">
+					<div class="content_li1">
+						<img class="needfirst" src="img/Sunshine/homes_pic_three.jpg" onmouseover="this.src = 'img/Sunshine/homes_pic_three_h.jpg'" onmouseout="this.src = 'img/Sunshine/homes_pic_three.jpg'"/>
+					</div>
+					<div class="content_li2"></div>
+					<div class="content_li3">
+						<span>三维动画</span>
+						<p>房地产广告动画设计方案动漫企业宣传动画</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>
